@@ -1,0 +1,101 @@
+.panel {
+  width: 100%;
+  max-width: 460px;
+  padding: 10px 12px;
+  background: linear-gradient(0deg, #1a0f08 0%, #2a1f15 100%);
+  border-top: 2px solid #5a3a20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message {
+  font-size: 0.9rem;
+  color: #f0d090;
+  text-align: center;
+  font-weight: bold;
+  min-height: 1.3em;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #a08060;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.difficultyGroup {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.diffBtn {
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  border: 1px solid #5a3a20;
+  border-radius: 4px;
+  background: #3b2a1a;
+  color: #c0a070;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.diffBtn:hover {
+  background: #4b3a2a;
+  color: #f0d090;
+}
+
+.diffBtn.active {
+  background: #7a4a20;
+  color: #ffd700;
+  border-color: #ffd700;
+  font-weight: bold;
+}
+
+.actionGroup {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.restartBtn, .helpBtn {
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: filter 0.15s;
+}
+
+.restartBtn {
+  background: #5a3a20;
+  color: #ffd700;
+}
+
+.helpBtn {
+  background: #2a3a5a;
+  color: #90c0ff;
+}
+
+.restartBtn:hover, .helpBtn:hover {
+  filter: brightness(1.2);
+}
+
+.startHint {
+  font-size: 0.75rem;
+  color: #7ad0a0;
+  text-align: center;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

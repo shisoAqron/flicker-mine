@@ -1,0 +1,45 @@
+.hud {
+  width: 100%;
+  max-width: 460px;
+  padding: 10px 12px 8px;
+  background: linear-gradient(180deg, #2a1f15 0%, #1e1510 100%);
+  border-bottom: 2px solid #5a3a20;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+
+.label {
+  font-size: 0.65rem;
+  color: #a08060;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.value {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #f0d090;
+}

@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.dialog {
+  background: linear-gradient(160deg, #2a1f15 0%, #1a0f08 100%);
+  border: 2px solid #5a3a20;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 340px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section h3 {
+  font-size: 0.85rem;
+  color: #ffd700;
+  margin: 0 0 6px;
+  font-weight: bold;
+}
+
+.section p {
+  font-size: 0.8rem;
+  color: #c0a070;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.section ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 0.78rem;
+  color: #c0a070;
+  line-height: 1.7;
+}
+
+.closeBtn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  background: #3b2a1a;
+  color: #f0d090;
+  border: 1px solid #5a3a20;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.closeBtn:hover {
+  filter: brightness(1.2);
+}

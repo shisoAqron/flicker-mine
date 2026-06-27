@@ -1,0 +1,20 @@
+.board {
+  width: min(92vw, 420px);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  touch-action: none;
+  gap: 2px;
+  background-color: #1a0f08;
+  border: 2px solid #5a3a20;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.emptyCell {
+  background-color: #6b4f3a;
+  border-radius: 3px;
+  aspect-ratio: 1 / 1;
+}

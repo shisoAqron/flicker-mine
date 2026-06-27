@@ -43,7 +43,7 @@ export function GameBoard({
   });
 
   if (board.length === 0) {
-    // 未生成時：空のグリッドを表示
+    // 未生成時：開始マス選択用のクリッカブルなグリッドを表示
     return (
       <div
         ref={boardRef}
@@ -53,9 +53,17 @@ export function GameBoard({
           gridTemplateRows: `repeat(${boardSize}, 1fr)`,
         }}
       >
-        {Array.from({ length: boardSize * boardSize }).map((_, i) => (
-          <div key={i} className={styles.emptyCell} />
-        ))}
+        {Array.from({ length: boardSize }).flatMap((_, y) =>
+          Array.from({ length: boardSize }).map((_, x) => (
+            <div
+              key={`${x}-${y}`}
+              className={`${styles.emptyCell} ${styles.selectableCell}`}
+              onClick={() => onSelectStart(x, y)}
+              role="button"
+              aria-label={`マス(${x},${y})を開始地点に選択`}
+            />
+          ))
+        )}
       </div>
     );
   }

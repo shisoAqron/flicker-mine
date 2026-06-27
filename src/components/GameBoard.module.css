@@ -18,3 +18,12 @@
   border-radius: 3px;
   aspect-ratio: 1 / 1;
 }
+
+.selectableCell {
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.selectableCell:hover {
+  background-color: #8b6f5a;
+}

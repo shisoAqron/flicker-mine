@@ -21,8 +21,8 @@ const DIFFICULTY_DESC: Record<Difficulty, string> = {
 };
 
 const DIFFICULTY_ITEMS: Record<Difficulty, string> = {
-  easy: "✨×2 / 🧨×2",
-  normal: "✨×2 / 🧨×1",
+  easy: "✨×2 / 🧨×2 / 🛡️×2",
+  normal: "✨×2 / 🧨×1 / 🛡️×1",
   hard: "✨×1 / 🧨×1",
 };
 

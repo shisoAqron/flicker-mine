@@ -198,7 +198,7 @@ function movePickaxe(
       if (pickaxe.hasShield) {
         pickaxe.hasShield = false;
         cell.isExplosionMark = true;
-        cell.isMine = false;
+        // isMine は true のまま残す（totalSafeCells に影響させない）
         px = nx;
         py = ny;
         break;

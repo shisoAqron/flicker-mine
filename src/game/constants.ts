@@ -15,7 +15,7 @@ export const DIFFICULTY_CONFIG: Record<Difficulty, DifficultyConfig> = {
     mineCount: 9,
     splitItemCount: 2,
     blastItemCount: 2,
-    shieldItemCount: 0,
+    shieldItemCount: 2,
     maxPickaxes: 3,
   },
   normal: {
@@ -23,7 +23,7 @@ export const DIFFICULTY_CONFIG: Record<Difficulty, DifficultyConfig> = {
     mineCount: 15,
     splitItemCount: 2,
     blastItemCount: 1,
-    shieldItemCount: 0,
+    shieldItemCount: 1,
     maxPickaxes: 3,
   },
   hard: {

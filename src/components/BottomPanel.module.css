@@ -23,41 +23,6 @@
   text-align: center;
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.difficultyGroup {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-}
-
-.diffBtn {
-  padding: 5px 10px;
-  font-size: 0.75rem;
-  border: 1px solid #5a3a20;
-  border-radius: 4px;
-  background: #3b2a1a;
-  color: #c0a070;
-  cursor: pointer;
-  transition: background-color 0.15s, color 0.15s;
-}
-
-.diffBtn:hover {
-  background: #4b3a2a;
-  color: #f0d090;
-}
-
-.diffBtn.active {
-  background: #7a4a20;
-  color: #ffd700;
-  border-color: #ffd700;
-  font-weight: bold;
-}
-
 .actionGroup {
   display: flex;
   justify-content: center;

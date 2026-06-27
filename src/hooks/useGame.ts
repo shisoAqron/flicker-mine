@@ -10,30 +10,41 @@ import {
 } from "../game/constants";
 import { loadBestScore, saveBestScore } from "../game/storage";
 
-function createInitialState(difficulty: Difficulty): GameState {
-  const config = DIFFICULTY_CONFIG[difficulty];
+function createInitialState(): GameState {
   return {
     board: [],
     pickaxes: [],
-    status: "waiting-start",
+    status: "title",
     score: 0,
     bestScore: loadBestScore(),
     openedSafeCells: 0,
     totalSafeCells: 0,
-    mineCount: config.mineCount,
-    message: "開始マスを選んでください",
-    difficulty,
+    mineCount: DIFFICULTY_CONFIG["normal"].mineCount,
+    message: "",
+    difficulty: "normal",
   };
 }
 
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
-    case "SET_DIFFICULTY": {
-      return createInitialState(action.difficulty);
+    case "START_GAME": {
+      const config = DIFFICULTY_CONFIG[action.difficulty];
+      return {
+        board: [],
+        pickaxes: [],
+        status: "waiting-start",
+        score: 0,
+        bestScore: state.bestScore,
+        openedSafeCells: 0,
+        totalSafeCells: 0,
+        mineCount: config.mineCount,
+        message: "開始マスを選んでください",
+        difficulty: action.difficulty,
+      };
     }
 
     case "RESTART": {
-      return createInitialState(state.difficulty);
+      return { ...createInitialState(), bestScore: state.bestScore };
     }
 
     case "START_AT": {
@@ -140,9 +151,13 @@ function getDirectionMessage(direction: Direction): string {
 export function useGame() {
   const [state, dispatch] = useReducer(
     gameReducer,
-    "normal" as Difficulty,
+    undefined,
     createInitialState
   );
+
+  const startGame = useCallback((difficulty: Difficulty) => {
+    dispatch({ type: "START_GAME", difficulty });
+  }, []);
 
   const startAt = useCallback((x: number, y: number) => {
     dispatch({ type: "START_AT", x, y });
@@ -157,8 +172,8 @@ export function useGame() {
   }, []);
 
   const setDifficulty = useCallback((difficulty: Difficulty) => {
-    dispatch({ type: "SET_DIFFICULTY", difficulty });
+    dispatch({ type: "START_GAME", difficulty });
   }, []);
 
-  return { state, startAt, swipe, restart, setDifficulty };
+  return { state, startGame, startAt, swipe, restart, setDifficulty };
 }

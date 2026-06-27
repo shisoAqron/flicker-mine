@@ -1,0 +1,193 @@
+.screen {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1a0f08 0%, #0d0510 100%);
+  padding: 20px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* タイトルブロック */
+.titleBlock {
+  text-align: center;
+}
+
+.icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  margin: 0 0 6px;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  font-size: 0.82rem;
+  color: #a08060;
+  margin: 0;
+}
+
+/* ベストスコア */
+.bestScore {
+  font-size: 0.85rem;
+  color: #c0a070;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  padding: 6px 16px;
+}
+
+.bestScore span {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* 難易度選択 */
+.difficultySection {
+  width: 100%;
+}
+
+.sectionLabel {
+  font-size: 0.78rem;
+  color: #a08060;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.difficultyList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diffBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #2a1f15;
+  border: 2px solid #3a2a1a;
+  border-radius: 10px;
+  color: #c0a070;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: left;
+}
+
+.diffBtn:hover {
+  border-color: #7a5a30;
+  background: #3a2a1a;
+}
+
+.diffBtn.active {
+  border-color: #ffd700;
+  background: #3a2a10;
+}
+
+.diffName {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f0d090;
+  min-width: 72px;
+}
+
+.diffBtn.active .diffName {
+  color: #ffd700;
+}
+
+.diffDetail {
+  font-size: 0.78rem;
+  color: #a08060;
+  flex: 1;
+}
+
+.diffItems {
+  font-size: 0.75rem;
+  color: #808060;
+}
+
+/* 選択中の概要 */
+.selectedInfo {
+  display: flex;
+  gap: 10px;
+  font-size: 0.72rem;
+  color: #806040;
+}
+
+.selectedInfo span {
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+
+/* スタートボタン */
+.startBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #a06020 0%, #7a4010 100%);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: filter 0.15s, transform 0.1s;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.startBtn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.startBtn:active {
+  transform: translateY(0);
+}
+
+/* 遊び方 */
+.howto {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #3a2a1a;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.howto p {
+  font-size: 0.78rem;
+  color: #a08060;
+  margin: 0 0 6px;
+  font-weight: bold;
+}
+
+.howto ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 0.75rem;
+  color: #806050;
+  line-height: 1.8;
+}

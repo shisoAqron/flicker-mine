@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useGame } from "./hooks/useGame";
+import { TitleScreen } from "./components/TitleScreen";
 import { GameBoard } from "./components/GameBoard";
 import { Hud } from "./components/Hud";
 import { BottomPanel } from "./components/BottomPanel";
@@ -9,7 +10,7 @@ import type { Direction, Difficulty } from "./game/types";
 import styles from "./App.module.css";
 
 export default function App() {
-  const { state, startAt, swipe, restart, setDifficulty } = useGame();
+  const { state, startGame, startAt, swipe, restart } = useGame();
   const [showHelp, setShowHelp] = useState(false);
 
   const handleSwipe = useCallback(
@@ -19,12 +20,21 @@ export default function App() {
     [swipe]
   );
 
-  const handleSetDifficulty = useCallback(
+  const handleStart = useCallback(
     (d: Difficulty) => {
-      setDifficulty(d);
+      startGame(d);
     },
-    [setDifficulty]
+    [startGame]
   );
+
+  if (state.status === "title") {
+    return (
+      <TitleScreen
+        bestScore={state.bestScore}
+        onStart={handleStart}
+      />
+    );
+  }
 
   return (
     <div className={styles.app}>
@@ -42,9 +52,7 @@ export default function App() {
       <BottomPanel
         status={state.status}
         message={state.message}
-        difficulty={state.difficulty}
         onRestart={restart}
-        onSetDifficulty={handleSetDifficulty}
         onHelp={() => setShowHelp(true)}
       />
       <GameResultDialog

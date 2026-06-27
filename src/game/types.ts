@@ -1,6 +1,7 @@
 export type Direction = "up" | "down" | "left" | "right";
 
 export type GameStatus =
+  | "title"
   | "waiting-start"
   | "playing"
   | "clear"
@@ -42,7 +43,7 @@ export type GameState = {
 };
 
 export type GameAction =
+  | { type: "START_GAME"; difficulty: Difficulty }
   | { type: "START_AT"; x: number; y: number }
   | { type: "SWIPE"; direction: Direction }
-  | { type: "RESTART" }
-  | { type: "SET_DIFFICULTY"; difficulty: Difficulty };
+  | { type: "RESTART" };

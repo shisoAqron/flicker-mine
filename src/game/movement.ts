@@ -133,7 +133,8 @@ function movePickaxe(
   direction: Direction,
   boardSize: number,
   allPickaxes: Pickaxe[],
-  maxPickaxes: number
+  maxPickaxes: number,
+  occupiedPositions: Set<string>
 ): MoveSingleResult {
   let px = pickaxe.x;
   let py = pickaxe.y;
@@ -174,10 +175,17 @@ function movePickaxe(
     // --- 開封済み ---
     if (cell.isRevealed || cell.isExplosionMark) {
       if (cell.adjacentMines > 0 && !cell.isExplosionMark) {
-        // 既存の数字マス → 乗って停止
+        // 既存の数字マス
+        if (!occupiedPositions.has(`${nx},${ny}`)) {
+          // 誰もいない → 乗って停止
+          px = nx;
+          py = ny;
+          break;
+        }
+        // 既に別のつるはしがいる → 通過
         px = nx;
         py = ny;
-        break;
+        continue;
       }
       // 空白マス(または爆発跡) → 通過
       px = nx;
@@ -267,13 +275,16 @@ export function moveAllPickaxes(
   maxPickaxes: number
 ): MoveResult {
   const newBoard = cloneBoard(board);
-  // pickaxes をコピー（分裂で増えるので mutable array として渡す）
+  // pickaxes をコピー（分裂で増えることがあるが、今ターン生まれた分は動かさない）
   const newPickaxes: Pickaxe[] = pickaxes.map((p) => ({ ...p }));
+  // 今ターン処理するつるはしの数を最初に確定する（分裂で増えた分は次ターンから動く）
+  let processCount = newPickaxes.length;
+  // 処理済みのつるはしが停止した位置（重複回避用）
+  const occupiedPositions = new Set<string>();
   let totalScore = 0;
   let totalOpened = 0;
 
-  // 分裂でループ中に増えることがあるので、インデックスで回す
-  for (let i = 0; i < newPickaxes.length; i++) {
+  for (let i = 0; i < processCount; i++) {
     const pickaxe = newPickaxes[i];
     const result = movePickaxe(
       newBoard,
@@ -281,16 +292,19 @@ export function moveAllPickaxes(
       direction,
       boardSize,
       newPickaxes,
-      maxPickaxes
+      maxPickaxes,
+      occupiedPositions
     );
     totalScore += result.scoreGain;
     totalOpened += result.newlyOpened;
     if (result.alive) {
       pickaxe.x = result.px;
       pickaxe.y = result.py;
+      occupiedPositions.add(`${result.px},${result.py}`);
     } else {
       newPickaxes.splice(i, 1);
       i--;
+      processCount--; // 削除した分だけ処理数を減らす
     }
   }
 

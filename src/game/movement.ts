@@ -182,10 +182,9 @@ function movePickaxe(
           py = ny;
           break;
         }
-        // 既に別のつるはしがいる → 通過
-        px = nx;
-        py = ny;
-        continue;
+        // 既に別のつるはしがいる → 手前（現在位置 px,py）で停止
+        // ※通過させると地雷に突っ込む危険があるため
+        break;
       }
       // 空白マス(または爆発跡) → 通過
       px = nx;
